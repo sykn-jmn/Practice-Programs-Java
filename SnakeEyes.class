@@ -1,0 +1,37 @@
+package jeman.mama;
+
+import java.util.Random;
+
+public class SnakeEyes {
+    /**
+     * This is a program that will calculate the average number of attempts needed when you
+     * throw two dices until the value of both dices are 1
+     * Results show that the more times you do this, the more the average becomes a fixed number.
+     * @param args
+     */
+    public static void main(String[] args) {
+        Random rand = new Random();
+        int dice1 = 2;
+        int dice2 = 2;
+        int innercounter = 0;
+        int outercounter = 0;
+        double total = 0;
+        int numberOfLoop = 10000;
+        while(outercounter<numberOfLoop) {
+            innercounter = 0;
+            while (true) {
+                dice1 = rand.nextInt(6) + 1;
+                dice2 = rand.nextInt(6) + 1;
+                innercounter++;
+                if (dice1 == 1 && dice2 == 1) {
+                    break;
+                }
+            }
+            total += innercounter;
+            outercounter++;
+            System.out.println(outercounter + ".)  " + innercounter);
+        }
+        System.out.println();
+        System.out.println("Total: " + total/numberOfLoop);
+    }
+}
